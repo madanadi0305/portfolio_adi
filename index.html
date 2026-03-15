@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adi Madan — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #07060f;
+  --surface: rgba(255,255,255,0.04);
+  --border: rgba(255,255,255,0.08);
+  --text: #f0eefc;
+  --muted: #8b879e;
+  --grad-analyst: linear-gradient(135deg, #ff6b6b, #ffc93c);
+  --grad-eng:     linear-gradient(135deg, #4cc9f0, #06d6a0);
+  --grad-ai:      linear-gradient(135deg, #a855f7, #4cc9f0);
+  --font-d: 'Playfair Display', serif;
+  --font-b: 'Outfit', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 15% 10%, rgba(255,107,107,0.13) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 5%,  rgba(255,201,60,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 50% at 90% 80%, rgba(76,201,240,0.11) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 45% at 5%  90%, rgba(168,85,247,0.09) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(6,214,160,0.06)  0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ── HEADER ── */
+header {
+  position: relative; z-index: 10;
+  max-width: 1160px; margin: 0 auto;
+  padding: 80px 5% 56px;
+}
+.hname {
+  font-family: var(--font-d);
+  font-size: clamp(2.8rem, 7.5vw, 5.8rem);
+  font-weight: 800; line-height: 1.0; letter-spacing: -0.02em;
+  background: linear-gradient(110deg, #fff 0%, #ff6b6b 28%, #ffc93c 50%, #06d6a0 72%, #4cc9f0 88%, #a855f7 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  background-size: 100% auto;
+  opacity: 0; animation: riseIn 0.7s 0.1s ease forwards;
+}
+.tagline {
+  margin-top: 10px; font-size: 15px; font-weight: 300; color: var(--muted);
+  opacity: 0; animation: riseIn 0.7s 0.2s ease forwards;
+}
+.tagline strong { font-weight: 500; color: rgba(240,238,252,0.7); }
+.summary {
+  margin-top: 16px;
+  font-size: 14.5px; font-weight: 700; line-height: 1.7;
+  color: rgba(240,238,252,0.88);
+  max-width: 680px;
+  opacity: 0; animation: riseIn 0.7s 0.28s ease forwards;
+}
+.summary .co {
+  background: linear-gradient(90deg, #ffc93c, #ff6b6b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-weight: 700;
+}
+.hlinks {
+  margin-top: 28px; display: flex; gap: 10px; flex-wrap: wrap;
+  opacity: 0; animation: riseIn 0.7s 0.38s ease forwards;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 100px; font-size: 12.5px; font-weight: 500;
+  text-decoration: none; color: var(--text);
+  border: 1px solid var(--border); background: var(--surface);
+  backdrop-filter: blur(8px);
+  position: relative; overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.chip::before { content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.2s; }
+.chip.coral::before { background: linear-gradient(135deg, rgba(255,107,107,0.18), rgba(255,201,60,0.1)); }
+.chip.sky::before   { background: linear-gradient(135deg, rgba(76,201,240,0.18), rgba(6,214,160,0.1)); }
+.chip.violet::before { background: linear-gradient(135deg, rgba(168,85,247,0.18), rgba(76,201,240,0.1)); }
+.chip:hover { transform: translateY(-2px); }
+.chip.coral:hover  { box-shadow: 0 6px 28px rgba(255,107,107,0.2); border-color: rgba(255,107,107,0.3); }
+.chip.sky:hover    { box-shadow: 0 6px 28px rgba(76,201,240,0.2);  border-color: rgba(76,201,240,0.3); }
+.chip.violet:hover { box-shadow: 0 6px 28px rgba(168,85,247,0.2); border-color: rgba(168,85,247,0.3); }
+.chip:hover::before { opacity: 1; }
+.chip svg { width: 14px; height: 14px; flex-shrink: 0; position: relative; }
+.chip span { position: relative; }
+.hdivider {
+  height: 1px; margin-top: 52px;
+  background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 20;
+  background: rgba(7,6,15,0.82); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1160px; margin: 0 auto; padding: 0 5%;
+  display: flex; gap: 0;
+}
+.tab-btn {
+  position: relative; background: none; border: none;
+  color: var(--muted); font-family: var(--font-b); font-size: 13px; font-weight: 500;
+  letter-spacing: 0.04em; padding: 18px 22px; cursor: pointer;
+  transition: color 0.2s; white-space: nowrap;
+  display: flex; align-items: center; gap: 8px;
+}
+.tb-bar {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  border-radius: 2px 2px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+}
+.tab-btn.ta .tb-bar { background: var(--grad-analyst); }
+.tab-btn.te .tb-bar { background: var(--grad-eng); }
+.tab-btn.ti .tb-bar { background: var(--grad-ai); }
+.tab-btn.active { color: var(--text); }
+.tab-btn.active .tb-bar { transform: scaleX(1); }
+.tab-btn:hover:not(.active) { color: rgba(240,238,252,0.6); }
+.tb-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 5px;
+  border-radius: 100px; font-size: 10px; font-weight: 700; color: #07060f;
+}
+.tab-btn.ta .tb-badge { background: linear-gradient(135deg, #ff6b6b, #ffc93c); }
+.tab-btn.te .tb-badge { background: linear-gradient(135deg, #4cc9f0, #06d6a0); }
+.tab-btn.ti .tb-badge { background: linear-gradient(135deg, #a855f7, #4cc9f0); }
+
+/* ── MAIN ── */
+main {
+  max-width: 1160px; margin: 0 auto;
+  padding: 48px 5% 96px; position: relative; z-index: 2;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeUp 0.4s ease; }
+
+.sec-hd { display: flex; align-items: center; gap: 16px; margin-bottom: 30px; }
+.sec-lbl {
+  font-family: var(--font-d); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;
+}
+.sec-lbl.a { background: var(--grad-analyst); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.sec-lbl.e { background: var(--grad-eng);     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.sec-lbl.i { background: var(--grad-ai);      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.sec-line { flex: 1; height: 1px; background: var(--border); }
+
+/* ── GRID ── */
+.cgrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 18px;
+}
+
+/* ── CARD ── */
+.card {
+  position: relative;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  text-decoration: none; color: inherit; overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.34,1.2,0.64,1), box-shadow 0.3s, border-color 0.3s;
+  opacity: 0; animation: fadeUp 0.5s ease forwards;
+}
+.card:nth-child(1){animation-delay:.05s} .card:nth-child(2){animation-delay:.10s}
+.card:nth-child(3){animation-delay:.15s} .card:nth-child(4){animation-delay:.20s}
+.card:nth-child(5){animation-delay:.25s}
+
+/* gradient border glow */
+.card::before {
+  content: ''; position: absolute; inset: -1px; border-radius: 21px;
+  background: var(--cg); opacity: 0; transition: opacity 0.3s; z-index: -1;
+}
+.card::after {
+  content: ''; position: absolute; inset: 0; border-radius: 20px;
+  background: var(--bg); z-index: -1;
+}
+.card:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 24px 64px rgba(0,0,0,0.5); border-color: transparent; }
+.card:hover::before { opacity: 1; }
+
+.cglow {
+  position: absolute; inset: 0; border-radius: 20px;
+  opacity: 0; transition: opacity 0.4s; pointer-events: none;
+}
+.card:hover .cglow { opacity: 1; }
+
+/* variants */
+.card.ca { --cg: linear-gradient(135deg,#ff6b6b,#ffc93c); }
+.card.ca .cglow { background: radial-gradient(ellipse at top left, rgba(255,107,107,0.13) 0%,transparent 65%); }
+.card.ca .cico  { background: linear-gradient(135deg,rgba(255,107,107,0.2),rgba(255,201,60,0.12)); border-color: rgba(255,107,107,0.25); }
+.card.ce { --cg: linear-gradient(135deg,#4cc9f0,#06d6a0); }
+.card.ce .cglow { background: radial-gradient(ellipse at top left, rgba(76,201,240,0.13) 0%,transparent 65%); }
+.card.ce .cico  { background: linear-gradient(135deg,rgba(76,201,240,0.2),rgba(6,214,160,0.12)); border-color: rgba(76,201,240,0.25); }
+.card.ci { --cg: linear-gradient(135deg,#a855f7,#4cc9f0); }
+.card.ci .cglow { background: radial-gradient(ellipse at top left, rgba(168,85,247,0.13) 0%,transparent 65%); }
+.card.ci .cico  { background: linear-gradient(135deg,rgba(168,85,247,0.2),rgba(76,201,240,0.12)); border-color: rgba(168,85,247,0.25); }
+
+.ctop { display: flex; justify-content: space-between; align-items: flex-start; }
+.cico {
+  width: 48px; height: 48px; border-radius: 14px; border: 1px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; flex-shrink: 0;
+}
+.carrow {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); transition: all 0.2s; flex-shrink: 0;
+}
+.card.ca:hover .carrow { border-color:#ff6b6b; color:#ff6b6b; background:rgba(255,107,107,0.1); }
+.card.ce:hover .carrow { border-color:#4cc9f0; color:#4cc9f0; background:rgba(76,201,240,0.1); }
+.card.ci:hover .carrow { border-color:#a855f7; color:#a855f7; background:rgba(168,85,247,0.1); }
+
+.ctitle { font-family: var(--font-d); font-size: 17px; font-weight: 700; line-height: 1.25; }
+.cdesc  { font-size: 13.5px; color: var(--muted); line-height: 1.65; flex: 1; }
+.ctags  { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.tag {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.04em;
+  padding: 4px 11px; border-radius: 100px;
+  background: rgba(255,255,255,0.05); color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+/* coming soon */
+.card.coming { opacity: 0.5 !important; cursor: default; border-style: dashed; animation-delay: 0s !important; }
+.card.coming:hover { transform: none !important; box-shadow: none !important; }
+.card.coming:hover::before { opacity: 0 !important; }
+.cpill {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 100px;
+  background: linear-gradient(135deg,rgba(168,85,247,0.15),rgba(76,201,240,0.1));
+  color: #c084fc; border: 1px solid rgba(168,85,247,0.3);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 2;
+  text-align: center; padding: 28px 5%;
+  border-top: 1px solid var(--border);
+  font-size: 12px; color: var(--muted); letter-spacing: 0.06em;
+}
+footer span {
+  background: linear-gradient(90deg, #ff6b6b, #ffc93c, #06d6a0, #4cc9f0, #a855f7);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  font-weight: 600;
+}
+
+/* ── Animations ── */
+@keyframes riseIn { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeUp  { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+@media(max-width:700px) {
+  .cgrid{grid-template-columns:1fr;}
+  .hname{font-size:2.8rem;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1 class="hname">Adi Madan</h1>
+  <p class="tagline"><strong>Data Analyst · Data Engineer · AI Builder</strong> &nbsp;—&nbsp; Mountain View, CA</p>
+  <p class="summary">4+ years of experience turning data into decisions. Previously at <span class="co">LTI Mindtree</span>, <span class="co">Intuitive Surgical</span>, and <span class="co">Excellerate Education Solutions</span> — building data pipelines, analytical dashboards, and AI-driven solutions across healthcare, education, and enterprise tech.</p>
+  <div class="hlinks">
+    <a class="chip coral" href="https://www.linkedin.com/in/adi-madan/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452H17.21v-5.569c0-1.328-.024-3.036-1.851-3.036-1.853 0-2.136 1.447-2.136 2.94v5.665H9.987V9h3.102v1.561h.044c.432-.819 1.487-1.682 3.062-1.682 3.274 0 3.878 2.154 3.878 4.955v6.618zM5.337 7.433a1.8 1.8 0 1 1 0-3.601 1.8 1.8 0 0 1 0 3.601zM6.955 20.452H3.717V9h3.238v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      <span>LinkedIn</span>
+    </a>
+    <a class="chip sky" href="https://github.com/madanadi0305" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      <span>GitHub</span>
+    </a>
+    <a class="chip violet" href="/cdn-cgi/l/email-protection#7e131f1a1f101f1a174e4d4e4b3e19131f1712501d1113">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      <span><span class="__cf_email__" data-cfemail="1a777b7e7b747b7e732a292a2f5a7d777b737634797577">[email&#160;protected]</span></span>
+    </a>
+  </div>
+  <div class="hdivider"></div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="tab-btn ta active" onclick="switchTab('a',this)">
+      <span>Data Analyst</span><span class="tb-badge">5</span><span class="tb-bar"></span>
+    </button>
+    <button class="tab-btn te" onclick="switchTab('e',this)">
+      <span>Data Engineering</span><span class="tb-badge">3</span><span class="tb-bar"></span>
+    </button>
+    <button class="tab-btn ti" onclick="switchTab('i',this)">
+      <span>AI Projects</span><span class="tb-badge">3</span><span class="tb-bar"></span>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ANALYST -->
+  <div class="tab-panel active" id="tab-a">
+    <div class="sec-hd"><span class="sec-lbl a">Analysis &amp; Visualization</span><div class="sec-line"></div></div>
+    <div class="cgrid">
+
+      <a class="card ca" href="https://github.com/madanadi0305/Airbnb-Price-Prediction/blob/main/Airbnb%20Price%20Prediction%20Project%20Report.pdf" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">🏠</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">Airbnb Price Analysis &amp; Prediction</div>
+        <div class="cdesc">Explored Airbnb listing data to uncover pricing dynamics. Built regression models to forecast prices from location, amenities, and host attributes.</div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">EDA</span><span class="tag">Regression</span></div>
+      </a>
+
+      <a class="card ca" href="https://github.com/madanadi0305/Analyzing-Spotify-and-YouTube-Songs-Using-Python-MySQL/blob/main/Spotify_Youtube.ipynb" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">🎵</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">Spotify &amp; YouTube Song Analysis</div>
+        <div class="cdesc">Uncovered music trends across two platforms by analyzing audio features, engagement metrics, and cross-platform popularity using Python and MySQL.</div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">MySQL</span><span class="tag">Pandas</span><span class="tag">Data Viz</span></div>
+      </a>
+
+      <a class="card ca" href="https://github.com/madanadi0305/On-time-Performance-American-Airlines/blob/main/American%20Airlines%20On-time%20Performance.pdf" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">✈️</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">American Airlines On-Time Performance</div>
+        <div class="cdesc">Investigated flight delay patterns and seasonal trends, identifying root causes across routes and presenting findings through interactive dashboards.</div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Time Series</span></div>
+      </a>
+
+      <a class="card ca" href="https://github.com/madanadi0305/Social-Buzz-Analytics" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">📊</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">Accenture Social Buzz Data Analysis</div>
+        <div class="cdesc">Simulated a consulting engagement — cleaned multi-source datasets, ranked top content categories, and delivered an executive insights presentation.</div>
+        <div class="ctags"><span class="tag">Excel</span><span class="tag">Python</span><span class="tag">PowerPoint</span><span class="tag">Consulting</span></div>
+      </a>
+
+      <a class="card ca" href="https://public.tableau.com/app/profile/adi7168/vizzes" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">📈</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">Tableau Dashboard Collection</div>
+        <div class="cdesc">A curated showcase of interactive dashboards spanning finance, operations, and social analytics — designed for clarity and executive-level storytelling.</div>
+        <div class="ctags"><span class="tag">Tableau</span><span class="tag">Dashboards</span><span class="tag">Storytelling</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ENGINEERING -->
+  <div class="tab-panel" id="tab-e">
+    <div class="sec-hd"><span class="sec-lbl e">Pipelines, Architecture &amp; Infrastructure</span><div class="sec-line"></div></div>
+    <div class="cgrid">
+
+      <a class="card ce" href="https://github.com/madanadi0305" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">🔁</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">ETL Pipeline Design</div>
+        <div class="cdesc">End-to-end ETL pipelines for batch and streaming ingestion, transformation, and cloud warehouse loading — orchestrated via Apache Airflow with monitoring and alerting.</div>
+        <div class="ctags"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">AWS S3</span><span class="tag">Redshift</span></div>
+      </a>
+
+      <a class="card ce" href="https://github.com/madanadi0305" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">❄️</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">Cloud Data Warehouse Architecture</div>
+        <div class="cdesc">Scalable warehouse solutions on Snowflake and AWS with dimensional schema modeling, dbt transformation layers, and query performance tuning for analytics workloads.</div>
+        <div class="ctags"><span class="tag">Snowflake</span><span class="tag">dbt</span><span class="tag">AWS</span><span class="tag">SQL</span></div>
+      </a>
+
+      <a class="card ce" href="https://github.com/madanadi0305" target="_blank">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">🌊</div>
+          <div class="carrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>
+        </div>
+        <div class="ctitle">Real-Time Streaming Pipeline</div>
+        <div class="cdesc">Real-time event streaming using Apache Kafka and Spark Structured Streaming — processing high-velocity data for live dashboards and low-latency alerting systems.</div>
+        <div class="ctags"><span class="tag">Kafka</span><span class="tag">Spark</span><span class="tag">PySpark</span><span class="tag">Databricks</span></div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- AI -->
+  <div class="tab-panel" id="tab-i">
+    <div class="sec-hd"><span class="sec-lbl i">LLM &amp; ChatBot Projects</span><div class="sec-line"></div></div>
+    <div class="cgrid">
+
+      <a class="card ci coming" href="#" onclick="return false">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">🤖</div>
+          <span class="cpill">Coming Soon</span>
+        </div>
+        <div class="ctitle">Data Q&amp;A Chatbot (RAG)</div>
+        <div class="cdesc">A conversational AI assistant answering questions over structured data using Retrieval-Augmented Generation — built with LangChain, OpenAI, and a Pinecone vector backend.</div>
+        <div class="ctags"><span class="tag">LangChain</span><span class="tag">OpenAI</span><span class="tag">RAG</span><span class="tag">Pinecone</span></div>
+      </a>
+
+      <a class="card ci coming" href="#" onclick="return false">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">💬</div>
+          <span class="cpill">Coming Soon</span>
+        </div>
+        <div class="ctitle">SQL Generation Chatbot</div>
+        <div class="cdesc">An LLM-powered bot translating natural language questions into accurate SQL queries — with schema-awareness, auto-correction, and multi-table join support.</div>
+        <div class="ctags"><span class="tag">GPT-4</span><span class="tag">Text-to-SQL</span><span class="tag">FastAPI</span><span class="tag">Streamlit</span></div>
+      </a>
+
+      <a class="card ci coming" href="#" onclick="return false">
+        <div class="cglow"></div>
+        <div class="ctop">
+          <div class="cico">🧩</div>
+          <span class="cpill">Coming Soon</span>
+        </div>
+        <div class="ctitle">Multi-Agent Research Bot</div>
+        <div class="cdesc">An autonomous multi-agent system using LangGraph that routes tasks to specialized sub-agents for web research, summarization, and structured data extraction.</div>
+        <div class="ctags"><span class="tag">LangGraph</span><span class="tag">Agents</span><span class="tag">Claude API</span><span class="tag">Python</span></div>
+      </a>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <span>Adi Madan</span> &nbsp;·&nbsp; Mountain View, CA &nbsp;·&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="076a6663666966636e3734373247606a666e6b2964686a">[email&#160;protected]</a> &nbsp;·&nbsp; © 2026
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function switchTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classL
