@@ -65,15 +65,15 @@ header { position: relative; z-index: 10; max-width: 1160px; margin: 0 auto; pad
 .hname {
   font-family: var(--font-d); font-size: clamp(2.4rem, 6vw, 4.8rem);
   font-weight: 800; line-height: 1.0; letter-spacing: -0.02em;
-  background: linear-gradient(110deg, #fff 0%, #ff6b6b 28%, #ffc93c 50%, #06d6a0 72%, #4cc9f0 88%, #a855f7 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
   opacity: 0; animation: riseIn 0.7s 0.1s ease forwards;
   margin-top: 16px;
 }
 .tagline { margin-top: 8px; font-size: 14px; font-weight: 300; color: var(--muted); opacity: 0; animation: riseIn 0.7s 0.2s ease forwards; }
 .tagline strong { font-weight: 500; color: rgba(240,238,252,0.7); }
 .summary { margin-top: 14px; font-size: 13.5px; font-weight: 600; line-height: 1.7; color: rgba(240,238,252,0.82); max-width: 600px; opacity: 0; animation: riseIn 0.7s 0.28s ease forwards; text-align: center; }
-.summary .co { background: linear-gradient(90deg, #ffc93c, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.summary .co { color: #60a5fa; -webkit-text-fill-color: #60a5fa; font-weight: 700; }
 
 .hlinks { margin-top: 24px; display: flex; gap: 8px; flex-wrap: nowrap; justify-content: center; opacity: 0; animation: riseIn 0.7s 0.38s ease forwards; overflow-x: auto; padding-bottom: 4px; }
 .chip {
@@ -219,7 +219,7 @@ footer .fname { background: linear-gradient(90deg, #ff6b6b, #ffc93c, #06d6a0, #4
     <div class="header-left">
       <div class="avatar-wrap">
         <!-- Replace the src below with your actual headshot URL e.g. https://github.com/madanadi0305.png -->
-        <img src="https://github.com/madanadi0305/portfolio_adi/blob/main/Adi-madan-linkedin.png" alt="Adi Madan" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'avatar-placeholder\'>&#128100;</span>'"/>
+        <img src="https://github.com/madanadi0305.png" alt="Adi Madan" onerror="this.style.display='none';this.parentNode.innerHTML='<span class=\'avatar-placeholder\'>&#128100;</span>'"/>
       </div>
       <h1 class="hname">Adi Madan</h1>
       <p class="tagline"><strong>Data Analyst &middot; Data Engineer &middot; AI Builder</strong> &mdash; Mountain View, CA</p>
@@ -233,7 +233,7 @@ footer .fname { background: linear-gradient(90deg, #ff6b6b, #ffc93c, #06d6a0, #4
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.896-.015 3.286 0 .319.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
           <span>GitHub</span>
         </a>
-        <a class="chip violet" href="mailto:madanadi0305@gmail.com" title="madanadi0305@gmail.com">
+        <a class="chip violet" href="/cdn-cgi/l/email-protection#fd909c999c939c9994cdcecdc8bd9a909c9491d39e9290" title="madanadi0305@gmail.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
           <span>Email</span>
         </a>
@@ -416,10 +416,10 @@ footer .fname { background: linear-gradient(90deg, #ff6b6b, #ffc93c, #06d6a0, #4
 </main>
 
 <footer>
-  <span class="fname">Adi Madan</span> &nbsp;&middot;&nbsp; Mountain View, CA &nbsp;&middot;&nbsp; madanadi0305@gmail.com &nbsp;&middot;&nbsp; &copy; 2026
+  <span class="fname">Adi Madan</span> &nbsp;&middot;&nbsp; Mountain View, CA &nbsp;&middot;&nbsp; <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="74191510151a15101d44474441341319151d185a171b19">[email&#160;protected]</a> &nbsp;&middot;&nbsp; &copy; 2026
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 (function() {
   function initTabs() {
     var btns = document.querySelectorAll('.tab-btn');
@@ -436,19 +436,4 @@ footer .fname { background: linear-gradient(90deg, #ff6b6b, #ffc93c, #06d6a0, #4
           panel.querySelectorAll('.card:not(.coming)').forEach(function(c, i) {
             c.style.animation = 'none';
             void c.offsetHeight;
-            c.style.animation = '';
-            c.style.animationDelay = (i * 0.08) + 's';
-          });
-        }
-      });
-    });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTabs);
-  } else {
-    initTabs();
-  }
-})();
-</script>
-</body>
-</html>
+            c.style.animat
